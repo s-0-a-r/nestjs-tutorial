@@ -3,18 +3,31 @@
 # ------------------------------------------------------
 
 type Event {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  name: String!
+  description: String
 }
 
 type Schedule {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  startAt: DateTime!
+  endAt: DateTime!
 }
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type User {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  name: String!
+  comment: String
+}
+
+type Attendance {
+  id: Int!
+  status: Int
 }
 
 type Query {
@@ -24,6 +37,8 @@ type Query {
   schedule(id: Int!): Schedule!
   users: [User!]!
   user(id: Int!): User!
+  attendances: [Attendance!]!
+  attendance(id: Int!): Attendance!
 }
 
 type Mutation {
@@ -36,6 +51,9 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  createAttendance(createAttendanceInput: CreateAttendanceInput!): Attendance!
+  updateAttendance(updateAttendanceInput: UpdateAttendanceInput!): Attendance!
+  removeAttendance(id: Int!): Attendance!
 }
 
 input CreateEventInput {
@@ -66,6 +84,17 @@ input CreateUserInput {
 }
 
 input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateAttendanceInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAttendanceInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!

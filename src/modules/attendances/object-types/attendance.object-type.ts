@@ -1,13 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
-export class Schedule {
+export class Attendance {
   @Field(() => Int)
   id: number;
 
-  @Field(() => Date)
-  startAt: Date;
-
-  @Field(() => Date)
-  endAt: Date;
+  @Field(() => Int, { nullable: true })
+  status: number;
 }
