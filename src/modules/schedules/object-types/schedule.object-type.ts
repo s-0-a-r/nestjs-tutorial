@@ -6,8 +6,8 @@ export class Schedule {
   id: number;
 
   @Field(() => Date)
-  startAt: Date;
+  start: Date;
 
   @Field(() => Date)
-  endAt: Date;
+  end: Date;
 }

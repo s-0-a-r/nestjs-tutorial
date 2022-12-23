@@ -10,8 +10,8 @@ type Event {
 
 type Schedule {
   id: Int!
-  startAt: DateTime!
-  endAt: DateTime!
+  start: DateTime!
+  end: DateTime!
 }
 
 """
