@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { SchedulesService } from './schedules.service';
-import { Schedule } from './entities/schedule.entity';
+import { Schedule } from './object-types/schedule.object-type';
 import { CreateScheduleInput } from './dto/create-schedule.input';
 import { UpdateScheduleInput } from './dto/update-schedule.input';
 
@@ -9,7 +9,9 @@ export class SchedulesResolver {
   constructor(private readonly schedulesService: SchedulesService) {}
 
   @Mutation(() => Schedule)
-  createSchedule(@Args('createScheduleInput') createScheduleInput: CreateScheduleInput) {
+  createSchedule(
+    @Args('createScheduleInput') createScheduleInput: CreateScheduleInput,
+  ) {
     return this.schedulesService.create(createScheduleInput);
   }
 
@@ -24,8 +26,13 @@ export class SchedulesResolver {
   }
 
   @Mutation(() => Schedule)
-  updateSchedule(@Args('updateScheduleInput') updateScheduleInput: UpdateScheduleInput) {
-    return this.schedulesService.update(updateScheduleInput.id, updateScheduleInput);
+  updateSchedule(
+    @Args('updateScheduleInput') updateScheduleInput: UpdateScheduleInput,
+  ) {
+    return this.schedulesService.update(
+      updateScheduleInput.id,
+      updateScheduleInput,
+    );
   }
 
   @Mutation(() => Schedule)
